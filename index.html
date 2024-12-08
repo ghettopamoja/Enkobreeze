@@ -20,8 +20,8 @@
       </div>
       <nav>
         <ul>
-          <li><a href="#Properties"></a>Properties</li>
-          <li><a href="#Agents"></a>Agents</li>
+          <li><a href="#Properties" title="Look for Properties"></a>Properties</li>
+          <li><a href="#Agents" title="Look for Agents"></a>Agents</li>
         </ul>
       </nav>
 
@@ -30,6 +30,7 @@
         <h2>Find your land from millions of acres</h2>
         <div class="search-input">
           <select name="areas" id="areas" title="Select land by area">
+            <option value="none" selected disabled>Choose your desired location</option>
             <option value="kerarapon">Kerarapon</option>
             <option value="ngong">Ngong</option>
             <option value="kibiko">kibiko</option>
@@ -42,7 +43,35 @@
       </div>
   </header>
 
+  <div class="introVideos-overlay">
+    <div class="close-video-overlay"><span>&times;</span></div>
+    <div class="content-intros">
+
+      <div class="left-content">
+        <div class="video-container">
+          <video src="#"></video>
+        </div>
+        <div class="progess-video-truck">
+          <div class="progress-video-bar"></div>
+        </div>
+        <div class="video-controls">
+          <div class="leftside-controls">
+            <button class="play-pause" title="Play video"><i class="fas fa-play"></i></button>
+            <button class="volume" title="mute video"><i class="fas fa-volume-up"></i></button>
+          </div>
+          <div class="rightside-controls">
+            <button class="settings" title="Settings"><i class="fas fa-cog"></i></button>
+            <button class="fullscreen" title="Fullscreen Mode"><i class="fas fa-expand"></i></button>
+            <button class="mini-player" title="Mini Player Mode"><i class="fas fa-external-link-alt"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
   <main>
+
     <div class="hero-section">
         <div class="cta-area">
           <h2>Check our Lands</h2>
@@ -53,9 +82,9 @@
         </div>
         <div class="locations">
           <ul>
-            <li><div class="hero-image"><img src="img1.jpg" alt="hero_image_1"></div></li>
-            <li><div class="hero-image"><img src="img2.jpg" alt="hero_image_1"></div></li>
-            <li><div class="hero-image"><img src="img3.jpg" alt="hero_image_1"></div></li>
+            <li data-video="introvid1.mp4"><div class="hero-image"><img src="img1.jpg" alt="hero_image_1" loading="lazy"></div><div class="control-icon"><span>&#9654;</span></div></li>
+            <li data-video="introvid2.mp4"><div class="hero-image"><img src="img2.jpg" alt="hero_image_2" loading="lazy"></div><div class="control-icon"><span>&#9654;</span></div></li>
+            <li data-video="introvid3.mp4"><div class="hero-image"><img src="img3.jpg" alt="hero_image_3" loading="lazy"></div><div class="control-icon"><span>&#9654;</span></div></li>
           </ul>
         </div>
     </div>
@@ -80,25 +109,25 @@
   
   </main>
   <footer>
-    <div class="left-side-footer">
-      <h2>News and Letter Updates</h2>
-      <div class="email-input">
-        <input type="email" inputmode="email" id="email" placeholder="Enter you Email address">
-        <span class="carousel-btn">
-          <i class="fas fa-arrow-right"></i>
-        </span>
-      </div>
+      <div class="left-side-footer">
+        <h2>News and Letter Updates</h2>
+        <div class="email-input">
+          <input type="email" inputmode="email" id="email" placeholder="Enter you Email address">
+          <span class="carousel-btn">
+            <i class="fas fa-arrow-right"></i>
+          </span>
+        </div>
 
-      <button>Back Top</button>
-    </div>
-    <div class="right-side-footer">
-      <ul>
-        <li><i class="fab fa-facebook-f"></i></li>
-        <li><i class="fab fa-x"></i> </li>
-        <li><i class="fab fa-instagram"></i> </li>
-        <li><i class="fab fa-linkedin-in"></i></li>
-      </ul>
-    </div>    
+        <button>Back Top</button>
+      </div>
+      <div class="right-side-footer">
+        <ul>
+          <li><i class="fab fa-facebook-f"></i></li>
+          <li><i class="fab fa-x"></i> </li>
+          <li><i class="fab fa-instagram"></i> </li>
+          <li><i class="fab fa-linkedin-in"></i></li>
+        </ul>
+      </div>    
   </footer>
    <script src="script.js"></script>
 </body>
