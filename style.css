@@ -53,13 +53,25 @@ header .top-header.scrolled{
     background-color: rgba(0, 123, 255, 0.6);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+    /* animation: myAnim 2s ease 0s 1 normal forwards; */
+    animation: myAnim2 2s ease 0s 1 normal forwards;
+}
+
+@keyframes myAnim2 {
+	0% {
+		opacity: 0;
+		transform: translateY(-50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 header .top-header.scrolled  .search-bar {
     margin-top: 150px;
 }
-
-
 
 .top-header .logo{
     width: 40%;
@@ -75,6 +87,7 @@ header .top-header.scrolled  .search-bar {
     width: 400px;
     height: 50px;
     border-radius: 20%;
+    
     
 }
 .logo .logo-image img{
@@ -111,6 +124,7 @@ header .top-header.scrolled  .search-bar {
     border: 1px solid #f9f9f9;
     padding: 10px 20px;
     border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .top-header nav ul li:hover {
@@ -120,6 +134,7 @@ header .top-header.scrolled  .search-bar {
 
 .top-header.scrolled nav ul li {
     background-color: #004600;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 /* Media query for screens 768px or smaller */
@@ -196,6 +211,18 @@ header .top-header.scrolled  .search-bar {
     }
 }
 
+@keyframes myAnim {
+	0% {
+		opacity: 0;
+		transform: translateX(-50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
 /*------------------------------------------------------------------------------------------------------------------*/
 .search-bar{
     background-color: transparent;
@@ -220,6 +247,13 @@ header .top-header.scrolled  .search-bar {
     height: 10vh;
     border-radius: 50px;
     border: 1px solid #f9f9f9;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    animation: myAnim 2s ease 0s 1 normal forwards;
+}
+
+.search-bar .search-input.highlight{
+    border: 5px solid gold;
+    
 }
 
 /* Remove default styling */
@@ -245,6 +279,7 @@ header .top-header.scrolled  .search-bar {
     color: #f9f9f9; /* Text color */
     padding: 10px; /* Padding around the option text */
     font-size: 30px;
+    border-radius: 20px;
 }
 
 /* Optional: Add custom dropdown arrow */
@@ -344,6 +379,7 @@ main{
     transition: background-color 0.75s, ease-in-out;
     cursor: pointer;
     font-size: 24px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 .hero-section .cta-area button:hover{
@@ -384,7 +420,7 @@ main{
     height: 100%;
     min-width: 600px;
     overflow: hidden;
-   
+    position: relative;
 }
 
 .hero-section .locations ul li .hero-image{
@@ -399,6 +435,59 @@ main{
     object-fit: cover;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.hero-section .locations ul li .control-icon {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 750ms;
+    background-image: linear-gradient(to right, rgba(0, 123, 255, 0) 0%, rgba(0, 123, 255, 0.6) 100%);
+    background-size: 0% 100%; /* Initially, the gradient will be hidden */
+    background-position: left center;
+}
+
+.hero-section .locations ul li .control-icon:hover {
+    background-size: 100% 100%; /* On hover, the gradient expands to fill the entire area */
+}
+
+
+.hero-section .locations ul li .control-icon:hover span{
+    background-color: #f9f9f9;
+    color: #007bff;
+    border-color: #f9f9f9;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.hero-section .locations ul li .control-icon span {
+    z-index: 2;
+    color: #f9f9f9;
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    border-radius: 50%;
+    border: 2px solid #007bff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 500ms;
+    background-color: rgba(0, 123, 255, 0.6);
+}
+
+.hero-section .locations ul li .control-icon span:hover{
+    color: #0056b3;
+    background-color: #f9f9f9;
+    border-color: #f9f9f9;
+    transform: scale(1.2);
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 /* Media query for 768px and below */
@@ -447,7 +536,7 @@ main{
     gap: 20px; /* Space between the divs */
     margin: 20px 10px;
     justify-content: space-between; /* Space out the items */
-    height: 60vh;
+    height: 80vh;
 
 }
 
@@ -591,7 +680,7 @@ footer > * {
     height: 30vh;
     background-color: transparent;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-around;
     flex-direction: column;
     
@@ -625,7 +714,7 @@ footer > * {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
 .left-side-footer .email-input span:hover{
@@ -640,6 +729,7 @@ footer > * {
     font-size: 24px;
     border-radius: 8px;
     cursor: pointer;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 .left-side-footer button:hover{
@@ -681,6 +771,7 @@ footer > * {
     font-size: 30px;
     cursor: pointer;
     transition: transform 0.5s ;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .right-side-footer  ul li:hover{
@@ -691,15 +782,18 @@ footer > * {
 /* Media query for 768px and below */
 @media (max-width: 800px) {
     footer {
-        flex-direction: column; /* Stack footer items vertically on smaller screens */
+        background-color: rgba(255, 255, 255, 0.7);
+        flex-direction: column-reverse; /* Stack footer items vertically on smaller screens */
         padding: 20px 10px; /* Adjust padding for a better mobile look */
         background-size: contain;
+
     }
 
     .left-side-footer, .right-side-footer {
         width: 100%; /* Take full width on smaller screens */
         height: auto; /* Adjust height based on content */
         margin-bottom: 20px; /* Adds space between stacked sections */
+        align-items: center;
     }
 
     .left-side-footer .email-input {
@@ -728,3 +822,238 @@ footer > * {
         font-size: 24px; /* Adjust icon size */
     }
 }
+
+/*************************************************************************************************************************************8*********************************/
+
+.introVideos-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.close-video-overlay {
+    position: absolute;
+    top: 8px;
+    right: 90px;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    background-color: #ff0000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    z-index: 3;
+    transition: 500ms;
+}
+
+.close-video-overlay:hover{
+    transform: scale(1.2);
+    color: #8c0303;
+    background-color: #f9f9f9;
+}
+
+.content-intros {
+    width: 80%;
+    background-color: transparent;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .left-content{
+    position: relative;
+    height: 600px;
+    background-color: #004600;
+    width: 100%;
+  }
+
+  .video-container {
+    width: 100%;
+    height: 600px;
+    background-color: rgba(0, 123, 255, 0.8);
+    
+  }
+
+  .video-container video {
+    width: 100%;
+    height: 100%;
+    border: none;
+    object-fit: cover;
+  }
+
+  .video-controls {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-top: 1px solid #ddd;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: #f9f9f9;
+    border-radius: inherit;
+  }
+  .video-controls button {
+    border: none;
+    background: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    color: #f9f9f9;
+  }
+
+  .video-controls button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .leftside-controls {
+    display: flex;
+    gap: 15px;
+  }
+
+  .rightside-controls {
+    display: flex;
+    gap: 15px;
+  }
+
+  .video-controls i {
+    pointer-events: none;
+  }
+
+.progess-video-truck {
+    width: 100%;
+    height: 5px;
+    background-color: transparent;
+    position: absolute;
+    bottom: 13%;
+    left: 0;
+}
+
+.progess-video-truck .progress-video-bar{
+    width: 0;
+    height: 100%;
+    background-color: rgb(175, 87, 5);
+    transition: width 0.3s;
+}
+
+/* Overlay styling */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    z-index: 10;
+    display: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Spinner animation */
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #fff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Show overlay */
+.loading-overlay.visible {
+    display: flex;
+}
+
+@media (max-width: 800px) {
+    .introVideos-overlay {
+        padding: 10px; /* Add padding for smaller screen edges */
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .close-video-overlay {
+        top: 30px;
+        right: 10px;
+        font-size: 1.5rem;
+        width: 40px;
+        height: 40px;
+    }
+
+    .content-intros {
+        width: 100%; /* Reduce the width to fit smaller screens */
+        flex-direction: column; /* Stack content vertically */
+        padding: 10px; /* Add some spacing */
+    }
+
+    .left-content {
+        height: 400px; /* Adjust the height for smaller screens */
+        border-radius: 10px;
+    }
+
+    .video-container {
+        border-radius: 10px;
+        height: 100%; /* Match the height of left-content */
+        background-color: transparent;
+        width: 100%;
+    }
+    .video-container video {
+       border-radius: 10px;
+        object-fit:fill;
+      }
+
+    .video-controls {
+        padding: 5px 10px; /* Reduce padding for better spacing */
+        flex-wrap: wrap; /* Allow controls to wrap if needed */
+        font-size: 0.9rem; /* Make the controls slightly smaller */
+        border-radius: inherit;
+        
+    }
+
+    .video-controls button {
+        padding: 8px; /* Adjust button size */
+        font-size: 1rem; /* Slightly reduce icon size */
+    }
+
+    .progess-video-truck {
+        bottom: 13%;
+        height: 3px; /* Make progress bar thinner */
+    }
+
+    .spinner {
+        width: 40px;
+        height: 40px;
+        border-width: 3px; /* Reduce spinner size */
+    }
+
+    .loading-overlay {
+        background-color: rgba(0, 0, 0, 0.7); /* Slightly lighter overlay */
+    }
+}
+/**********************************************************************************************************************************/
