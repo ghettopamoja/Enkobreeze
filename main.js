@@ -1,6 +1,9 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-  
+    let isPlayingVid = false;
+    let isMuted = false;
+    let intervals;
+
     const homeBtn = document.querySelectorAll("header nav ul li")[0];
     const AgentBtn = document.querySelectorAll("header nav ul li")[1];
     const featuredItemsContainer = document.querySelectorAll('.featured-content .featured');
@@ -18,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     homeBtn.onclick = function () {
       window.location.href = "index.html";
+      clearInterval(intervals);
     }
 
     AgentBtn.onclick = function () {
@@ -26,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function goToAgents () {
       window.location.href = "agent.html";
+      clearInterval(intervals);
     }
 
     window.addEventListener("scroll", function () {
@@ -795,4 +800,119 @@ document.addEventListener("DOMContentLoaded", function () {
       };
   };
   }
+
+
+  const quoteArea  = document.querySelector('.video-feature-intro .quote-updates h3');
+  const videoView = document.querySelector('.video-feature-intro  .video-container-preview video');
+  const loadingVidAnim =  document.querySelector('.video-feature-intro  .video-container-preview .loading-spinner-animation');
+  const playVid = document.querySelectorAll('.video-feature-intro .video-prev-controls button')[0];
+  const muteVid = document.querySelectorAll('.video-feature-intro .video-prev-controls button')[1];
+
+  const landQuotes = [
+    "Land: the timeless companion that grows with you and for you.",
+    "To be rooted is perhaps the most important and least recognized need of the human soul.",
+    "The best investment on Earth is earth.",
+    "Land really is the best art.",
+    "Land is not merely soil; it is a fountain of energy flowing through a circuit of life.",
+    "The best investment on Earth is Earth itself.",
+    "Owning land is about owning a piece of history and a promise of the future.",
+    "They aren’t making more land; treasure every acre you have.",
+    "A plot of land is a blank canvas for dreams yet to unfold.",
+    "To own land is to own a portion of the world's beauty.",
+    "Land connects us to our roots and secures our future.",
+    "Your land today, their legacy tomorrow.",
+    "In every acre lies infinite possibilities.",
+    "Every inch of land tells a story waiting to be written.",
+    "Invest in land, it’s the one thing they’re not making any more of.",
+    "Land is the foundation of every great dream.",
+    "A piece of land is a timeless treasure that appreciates with every sunrise."
+];
+
+  playVid.onclick = function () {
+    isPlayingVid = !isPlayingVid;
+
+   if(isPlayingVid) {
+      videoView.play();
+      playVid.innerHTML = '<i class="fas fa-pause"></i>';
+
+   }
+   else {
+      videoView.pause();
+      playVid.innerHTML = '<i class="fas fa-play"></i>';
+   }
+
+   showLandQuotes();
+  }
+
+  muteVid.onclick = function () {
+    isMuted = !isMuted;
+
+    videoView.muted = isMuted;
+  }
+
+  function showwaitingVideoMetadata(state) {
+      videoView.classList.toggle("blur", state);
+      loadingVidAnim.style.display = state ? "flex" : "none";
+  }
+
+  videoView.addEventListener('stalled', function () {
+    showwaitingVideoMetadata(true);
+  });
+
+  videoView.addEventListener('playing', function () {
+    showwaitingVideoMetadata(false);
+  });
+
+    videoView.addEventListener('ended', function () {
+      isPlayingVid = false;
+      playVid.innerHTML = '<i class="fas fa-play"></i>';
+      showwaitingVideoMetadata(false);
+      
+      // You can add any action you want here, like showing a replay button or resetting the video.
+  });
+
+  videoView.addEventListener('waiting', function () {
+    console.log("Video is buffering...");
+    // You could show a buffering animation here.
+    showwaitingVideoMetadata(true);
+  });
+
+  videoView.addEventListener('error', function () {
+    console.log("Error occurred while loading or playing the video.");
+    showwaitingVideoMetadata(true); // Show error message or retry option
+  });
+
+  videoView.addEventListener('suspend', function () {
+    console.log("Video suspend triggered (stopped fetching media).");
+    showwaitingVideoMetadata(true); // You can show a 'loading' spinner or error message
+  });
+
+  videoView.addEventListener('loadeddata', function () {
+    
+    showwaitingVideoMetadata(true); // You can show a 'loading' spinner or error message
+});
+
+videoView.addEventListener('loadedmetadata', function () {
+  console.log("Video metadata loaded.");
+  showwaitingVideoMetadata(false); // Video data loaded, no need for loading spinner
+});
+
+
+videoView.addEventListener('canplaythrough', function () {
+  showwaitingVideoMetadata(false); // You can show a 'loading' spinner or error message
+});
+
+videoView.addEventListener('pause', function () {
+  showwaitingVideoMetadata(false); // You can show a 'loading' spinner or error message
+});
+
+function showLandQuotes() {
+  let currentIndex = 0;
+
+  intervals = setInterval(function () {
+                quoteArea.textContent = landQuotes[currentIndex];
+                currentIndex = (currentIndex + 1) % landQuotes.length;
+  },5000);
+}
+
 });
