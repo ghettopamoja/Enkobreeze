@@ -848,6 +848,8 @@ document.addEventListener("DOMContentLoaded", function () {
     isMuted = !isMuted;
 
     videoView.muted = isMuted;
+
+    muteVid.innerHTML =  isMuted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>'
   }
 
   function showwaitingVideoMetadata(state) {
