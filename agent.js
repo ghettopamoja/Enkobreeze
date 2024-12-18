@@ -15,4 +15,18 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector('.top-header').classList.toggle('scrolled', scrollHeight > 10);        
     });
 
+      function showLoadingDiv(state) {
+        const loadingDiv = document.querySelector('.loading-page-overlay');
+        
+        if (state) {
+            loadingDiv.style.display = 'flex'; // Show the overlay
+        } else {
+            // Wait for 5 seconds before hiding the overlay
+            setTimeout(() => {
+                loadingDiv.style.display = 'none'; // Hide the overlay after 5 seconds
+            }, 5000); // 5000 milliseconds = 5 seconds
+        }
+    }
+
+    showLoadingDiv(false);
   });
