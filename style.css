@@ -2665,3 +2665,118 @@ footer > * {
         padding: 8px; /* Smaller padding for close button */
     }
 }
+
+/****************************************************************************************************************************************************************************/
+
+/* Container for video feature */
+.video-feature-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.quote-updates {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Quote section styling */
+.quote-updates h3 {
+    font-size: 1.8em;
+    color: #333;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+/* Styling for video container */
+.video-container-preview {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    background-color: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-container-preview video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.video-container-preview video.blur {
+    filter: blur(20px);
+    opacity: 0.3;
+}
+
+/* Spinner for loading */
+.loading-spinner-animation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 4px solid transparent;
+    border-top: 5px solid #02fc02;
+    border-bottom: 5px solid #02fc02;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+    display: none;
+}
+
+/* Video controls section */
+.video-prev-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    width: 100%;
+    border:1px solid #004080;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.video-prev-controls button {
+    background-color: transparent;
+    color: #0056b3;
+    border: none;
+    padding: 10px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+.video-prev-controls button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #f9f9f9;
+}
+
+.video-prev-controls .play-pause i,
+.video-prev-controls .volume i {
+    font-size: 1.8em;
+}
+
+
