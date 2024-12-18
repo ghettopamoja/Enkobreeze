@@ -2779,4 +2779,47 @@ footer > * {
     font-size: 1.8em;
 }
 
+/* Responsive Styles for screens 768px and below */
+@media (max-width: 800px) {
+    .video-feature-intro {
+        max-width: 100%;
+        margin: 10px;
+        padding: 15px;
+    }
 
+    .quote-updates h3 {
+        font-size: 1.2em; /* Reduce font size for mobile */
+        margin-bottom: 15px;
+    }
+
+    .video-container-preview {
+        padding-top: 75%; /* Adjust aspect ratio for better fit */
+    }
+
+    .video-container-preview video {
+        object-fit: cover;
+    }
+
+    .video-prev-controls {
+        flex-direction: row;
+        align-items: center;
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .video-prev-controls button {
+        margin: 10px 0; /* Stack the controls vertically */
+        padding: 12px 15px; /* Larger buttons for easier tap */
+        font-size: 1.2em; /* Larger font size for easier readability */
+    }
+
+    .video-prev-controls .play-pause i,
+    .video-prev-controls .volume i {
+        font-size: 1.3em; /* Larger icon sizes */
+    }
+
+    .loading-spinner-animation {
+        width: 50px;
+        height: 50px;
+    }
+}
