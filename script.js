@@ -70,6 +70,18 @@ document.addEventListener('DOMContentLoaded', function () {
         "Farmland"       // Land specifically used for farming
     ];
     
+    const landConditions = [
+        "Cleared and Leveled",  // Land prepared for construction or use
+        "Wooded",               // Land with trees and vegetation
+        "Uncleared",            // Land that has not been cleared yet
+        "Flood-Prone",          // Land prone to flooding or water damage
+        "Fenced",               // Land that is enclosed by a fence
+        "Sloped",               // Land with an incline or slope
+        "Rocky",                // Land with rocks or uneven surfaces
+        "Muddy",                // Land that is wet or boggy
+        "Paved",                // Land that is covered with asphalt or concrete
+        "Irrigated"             // Land with an irrigation system for water supply
+    ];
     
     
 
@@ -77,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {
             town: "Kerarapon",
             selectValue: "kerarapon",
-            placeImage: "img1.jpg",
+            placeImage: ["img1.jpg", "img15.jpg", "img16.jpg"],
             estimatedAcres: "200 Acres",
             NearbySchools: ["Kerarapon Secondary", "Domus", "Bethel Primary", "Serare Primary"],
             NearbyChurches: ["AIC Church", "Kerarapon Catholic Parish"],
@@ -99,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {
             town: "Ngong",
             selectValue: "ngong",
-            placeImage: "img2.jpg",
+            placeImage: ["img12.jpg"],
             estimatedAcres: "500 Acres",
             NearbySchools: ["PCEA Secondary", "Ngong Township"],
             NearbyChurches: ["AIC Church", "Kerarapon Catholic Parish"],
@@ -122,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {
             town: "Kibiko",
             selectValue: "kibiko",
-            placeImage: "img1.jpg",
+            placeImage: ["img17.jpg"],
             estimatedAcres: "400 Acres",
             NearbySchools: ["Kibiko Secondary", "Kibiko Primary"],
             NearbyChurches: ["AIC Church", "Kerarapon Catholic Parish"],
@@ -145,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {
             town: "Kimuka",
             selectValue: "kimuka",
-            placeImage: "img2.jpg",
+            placeImage: ["img2.jpg"],
             estimatedAcres: "700 Acres",
             NearbySchools: ["PCEA Kimuka", "Kibiko Primary"],
             NearbyChurches: ["AIC Church", "Kerarapon Catholic Parish"],
@@ -167,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {
             town: "Maroroi",
             selectValue: "maroroi",
-            placeImage: "img1.jpg",
+            placeImage: ["img18.jpg"],
             estimatedAcres: "20 Acres",
             NearbySchools: ["Ol-Maroroi Secondary", "Maroroi Primary"],
             NearbyChurches: ["AIC Church", "Kerarapon Catholic Parish"],
@@ -189,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {
             town: "Saikeri",
             selectValue: "saikeri",
-            placeImage: "img2.jpg",
+            placeImage: ["img18.jpg"],
             estimatedAcres: "800 Acres",
             NearbySchools: ["Saikeri Secondary", "Saikeri Primary"],
             NearbyChurches: ["AIC Church", "Kerarapon Catholic Parish"],
@@ -211,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {
             town: "Kiserian",
             selectValue: "kiserian",
-            placeImage: "img1.jpg",
+            placeImage: ["img10.jpg","img9.jpg"],
             estimatedAcres: "1000 Acres",
             NearbySchools: ["Timan Primary", "Naromoru Primary", "Gategi Secondary"],
             NearbyChurches: ["AIC Church", "St Mary Catholic Parish"],
@@ -228,11 +240,12 @@ document.addEventListener('DOMContentLoaded', function () {
             securityLevel: "High",
             internetProviders: ["Safaricom", "Zuku", "Faiba"],
             averageClimate: "Mild and temperate",
-            historicalSites: ["Ngong Hills", "Kiserian Market"]
+            historicalSites: ["Ngong Hills", "Kiserian Market"],
+            
         }
     ];        
 
-    const lands = [
+     const lands = [
         {
             landID: "EnkoBreezeProperties_1",
             landSize: "50 X 100",
@@ -262,6 +275,21 @@ document.addEventListener('DOMContentLoaded', function () {
     ];     
    
     
+    function showLoadingDiv(state) {
+        const loadingDiv = document.querySelector('.loading-page-overlay');
+        
+        if (state) {
+            loadingDiv.style.display = 'flex'; // Show the overlay
+        } else {
+            // Wait for 5 seconds before hiding the overlay
+            setTimeout(() => {
+                loadingDiv.style.display = 'none'; // Hide the overlay after 5 seconds
+            }, 5000); // 5000 milliseconds = 5 seconds
+        }
+    }
+
+    showLoadingDiv(false);
+
    // Create an IntersectionObserver to observe when the heroVidContainer is in the viewport
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -331,7 +359,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (foundedProp) {
             propTitle.innerHTML = `<h2>We have estimated <span>${foundedProp.estimatedAcres}</span> Acres in <span>${foundedProp.town}</span></h2>`;
             overlayText.innerHTML = `<h3>${foundedProp.town}</h3>`;
-            propImage.src = foundedProp.placeImage;
+            propImage.src = foundedProp.placeImage[0];
             const otherDetails =  [
                 {text:"Region", desc:foundedProp.region },
                 {text:"Estimated Population", desc:foundedProp.population}, 
