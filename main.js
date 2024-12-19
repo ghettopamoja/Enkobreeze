@@ -891,7 +891,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   videoView.addEventListener('loadeddata', function () {
     
-    showwaitingVideoMetadata(true); // You can show a 'loading' spinner or error message
+    showwaitingVideoMetadata(false); // You can show a 'loading' spinner or error message
 });
 
 videoView.addEventListener('loadedmetadata', function () {
@@ -901,6 +901,10 @@ videoView.addEventListener('loadedmetadata', function () {
 
 
 videoView.addEventListener('canplaythrough', function () {
+  showwaitingVideoMetadata(false); // You can show a 'loading' spinner or error message
+});
+
+videoView.addEventListener('canplay', function () {
   showwaitingVideoMetadata(false); // You can show a 'loading' spinner or error message
 });
 
@@ -914,7 +918,7 @@ function showLandQuotes() {
   intervals = setInterval(function () {
                 quoteArea.textContent = landQuotes[currentIndex];
                 currentIndex = (currentIndex + 1) % landQuotes.length;
-  },5000);
+  },15000);
 }
 
 });
